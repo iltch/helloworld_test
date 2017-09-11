@@ -27,5 +27,5 @@ Helloer::~Helloer() {
 }
 
 string Helloer::message() const{
-    return (string) "Hello" + who;
+    return (string) "Hello " + who;
 }
