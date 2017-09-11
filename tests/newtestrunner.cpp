@@ -23,6 +23,9 @@
 #include <cppunit/Test.h>
 #include <cppunit/TestFailure.h>
 #include <cppunit/portability/Stream.h>
+#include <cppunit/XmlOutputter.h>
+#include <ostream>
+
 
 class ProgressListener : public CPPUNIT_NS::TestListener {
 public:
@@ -84,6 +87,11 @@ int main() {
     // Print test in a compiler compatible format.
     CPPUNIT_NS::CompilerOutputter outputter(&result, CPPUNIT_NS::stdCOut());
     outputter.write();
+ 
+    // important stuff happens next
+    std::ofstream xmlFileOut("cpptestresults.xml");
+    CPPUNIT_NS::XmlOutputter xmlOut( &result, xmlFileOut);
+    xmlOut.write();
 
     return result.wasSuccessful() ? 0 : 1;
 }
