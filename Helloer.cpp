@@ -16,7 +16,7 @@
 Helloer::Helloer() {
 }
 
- Helloer(const string& aWho){
+ Helloer::Helloer(const string& aWho){
      who = aWho;
  }
 
